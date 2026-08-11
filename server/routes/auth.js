@@ -1,6 +1,6 @@
 const express = require("express");
 
-console.log("✅ auth.js loaded");
+console.log("auth.js loaded successfully");
 
 const router = express.Router();
 
