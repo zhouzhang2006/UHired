@@ -1,12 +1,8 @@
 const express = require("express");
-
-console.log("auth.js loaded successfully");
-
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    console.log("GET /api/auth hit");
-    res.send("Authentication route working!");
-});
+const { register } = require("../controllers/authController");
+
+router.post("/register", register);
 
 module.exports = router;
