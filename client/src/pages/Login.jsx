@@ -1,51 +1,99 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 
+import { loginUser } from "../services/api";
+
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await loginUser(formData);
+
+      // Save token
+      localStorage.setItem("token", response.data.token);
+
+      // Save user information
+      localStorage.setItem(
+        "user",
+        JSON.stringify(response.data.user)
+      );
+
+      alert("Login successful!");
+
+      navigate("/dashboard");
+    } catch (error) {
+      alert(
+        error.response?.data?.message ||
+          "Login failed. Please try again."
+      );
+    }
+  };
 
   return (
     <>
       <Navbar />
 
-      <div className="flex justify-center mt-20">
-        <div className="bg-white shadow-xl rounded-xl p-10 w-full max-w-md">
+      <div className="flex justify-center items-center min-h-[85vh] bg-gray-50">
+        <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
 
           <h1 className="text-3xl font-bold mb-2">
-            Welcome Back!
+            Welcome Back
           </h1>
 
           <p className="text-gray-500 mb-8">
             Login to your UHired account.
           </p>
 
-          <InputField
-            label="Email"
-            placeholder="johndoe@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <form onSubmit={handleSubmit}>
 
-          <InputField
-            label="Password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <InputField
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={handleChange}
+            />
 
-          <Button>Login</Button>
+            <InputField
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+
+            <Button>
+              Login
+            </Button>
+
+          </form>
 
           <p className="text-center mt-6">
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-blue-600 font-semibold"
+              className="text-blue-600 font-semibold hover:underline"
             >
               Sign Up
             </Link>

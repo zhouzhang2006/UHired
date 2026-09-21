@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
+// function for the Hero space of the page, which is the first thing users see when they visit the site
 function Hero() {
   return (
     <section className="text-center py-24 px-8">
       <h1 className="text-6xl font-bold mb-6">
-        Land More Interviews
+        Land More Interviews!
       </h1>
 
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">

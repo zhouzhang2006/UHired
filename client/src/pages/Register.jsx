@@ -7,6 +7,7 @@ import Button from "../components/Button";
 
 import { registerUser } from "../services/api";
 
+// function to handle user registration, which includes form validation and API call to register the user
 function Register() {
   const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ function Register() {
         confirmPassword: "",
       });
 
-      // Redirect to login page
+      // redirect the user to login page
       navigate("/login");
     } catch (error) {
       alert(
@@ -113,7 +114,7 @@ function Register() {
           </form>
 
           <p className="text-center mt-6">
-            Already have an account?{" "}
+            Already have an account?{" "} 
             <Link
               to="/login"
               className="text-blue-600 font-semibold hover:underline"
