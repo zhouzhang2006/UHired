@@ -7,10 +7,12 @@ function Analyze() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
+    // if no file is selected, return early
     if (!file) {
       return;
     }
 
+    // if the file is of an unsupported type, alert the user and return early
     if (file.type !== "application/pdf") {
       alert("Please upload a PDF file.");
       return;

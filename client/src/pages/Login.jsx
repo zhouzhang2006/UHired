@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import Navbar from "../components/Navbar";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 
 import { loginUser } from "../services/api";
 
+// login function
 function Login() {
   const navigate = useNavigate();
 
@@ -37,6 +37,7 @@ function Login() {
         JSON.stringify(response.data.user)
       );
 
+      // display a message to the user indicating that they have successfully logged in
       alert("Login successful!");
 
       navigate("/dashboard");

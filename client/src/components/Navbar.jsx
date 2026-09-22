@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// function that defines the navigation bar for the application. It includes links to the home page, dashboard, login page, and a sign-up button.
 function Navbar() {
   return (
     <nav className="flex justify-between items-center px-10 py-5">
