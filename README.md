@@ -1,3 +1,5 @@
+<img width="1464" height="802" alt="Screenshot 2026-10-17 at 7 46 11 PM" src="https://github.com/user-attachments/assets/222202de-c258-4a2f-bc08-412e79c8e623" />
+
 # What is UHired?
 UHired? is an AI-powered resume analysis platform that evaluates resumes against job descriptions and provides personalized feedback to improve ATS compatibility and interview readiness.
 
